@@ -90,14 +90,14 @@ jobs:
 
     - name: Upload dl directory
       uses: actions/upload-artifact@main
-      if: env.UPLOAD_BIN_DIR == 'true'
+      if: env.UPLOAD_DL_DIR == 'true'
       with:
         name: OpenWrt_dl${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/dl
 
     - name: Organize files
       id: organize
-      if: env.UPLOAD_BIN_DIR == 'true' && !cancelled()
+      if: env.UPLOAD_DL_DIR == 'true' && !cancelled()
       run: |
         cd openwrt/dl
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
